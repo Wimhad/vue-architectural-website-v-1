@@ -37,7 +37,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone <URL-репозитория>
+   git clone https://github.com/Wimhad/vue-architectural-website-v-1.git
    ```
 2. Перейдите в папку проекта:
    ```bash
