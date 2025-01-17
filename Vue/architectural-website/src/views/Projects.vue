@@ -2,13 +2,15 @@
 import { ref, onMounted } from 'vue';
 import ProjectCard from '@/components/ProjectCard.vue';
 import axios from 'axios';
+import {api} from '@/api.js';
 
 const projects = ref([]);
 const isLoading = ref(true);
 
 onMounted(async () => {
   try {
-    const res = await axios.get('/api/projects');
+    // const res = await axios.get('/api/projects');
+    const res = await api.get('/projects');
     projects.value = res.data;
   } catch (error) {
     console.error('Error fetching projects:', error);
