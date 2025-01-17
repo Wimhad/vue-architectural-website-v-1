@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 import BackButton from '@/components/BackButton.vue';
+import {api} from '@/api.js';
 
 const route = useRoute();
 const project = ref(null);
@@ -11,7 +12,8 @@ const isLoading = ref(true);
 onMounted(async () => {
   try {
     // Mock API call
-    const res = await axios.get(`/api/projects/${route.params.id}`);
+    // const res = await axios.get(`/api/projects/${route.params.id}`);
+    const res = await api.get(`/projects/${route.params.id}`);
     // const projectList = res.data;
     // project.value = projectList.find((p) => p.id === route.params.id);
     project.value = res.data;
