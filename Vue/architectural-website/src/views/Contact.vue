@@ -2,6 +2,7 @@
 import {reactive, ref} from 'vue';
 import axios from 'axios';
 import { useToast } from 'vue-toastification';
+import {api} from '@/api.js';
 
 const form = reactive({
   name: '',
@@ -18,7 +19,8 @@ const handleSubmit = async () => {
     message: form.message,
   };
   try {
-    const res = await axios.post('/api/contact', newMsg);
+    // const res = await axios.post('/api/contact', newMsg);
+    const res = await api.post('/contact', newMsg);
     toast.success('Message sent successfully!');
     form.name = ''; form.email = ''; form.message = '' ;
   } catch (error) {
@@ -70,45 +72,6 @@ const handleSubmit = async () => {
           Send Message
         </button>
       </form>
-
-      <!--      <form @submit.prevent="handleSubmit" class="bg-white p-6 rounded-lg shadow-md">
-              <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2">Name</label>
-                <input
-                    v-model="form.name"
-                    type="text"
-                    class="w-full border rounded px-3 py-2"
-                    placeholder="Your Name"
-                    required
-                />
-              </div>
-              <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2">Email</label>
-                <input
-                    v-model="form.email"
-                    type="email"
-                    class="w-full border rounded px-3 py-2"
-                    placeholder="Your Email"
-                    required
-                />
-              </div>
-              <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2">Message</label>
-                <textarea
-                    v-model="form.message"
-                    class="w-full border rounded px-3 py-2"
-                    rows="5"
-                    placeholder="Your Message"
-                    required
-                ></textarea>
-              </div>
-              <button
-                  type="submit"
-                  class="bg-primary text-white py-2 px-4 rounded hover:bg-accent"
-              >
-                Send Message
-              </button>
-            </form>-->
     </div>
   </section>
 </template>
